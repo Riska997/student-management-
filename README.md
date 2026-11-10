@@ -1,36 +1,35 @@
-# Student Management Platform — Web Demo
+# Campus Ledger — Student Management Platform (Web Version)
 
-An interactive, responsive HTML/CSS/JavaScript adaptation of [Java Swing + MySQL Student Management Platform](https://github.com/Riska997/StudentManagementPlatform).
+A **forest-green, cream and copper** editorial redesign of Prisca Mulishi's browser-based Student Management Platform demonstration.
 
-## Important distinction
+## What's different in this version?
 
-The Java source currently creates a MySQL `Students` table, inserts five sample rows, and opens a largely empty Swing form. This portfolio website **extends** the original concept with a completed student interface; it is not the Java/MySQL backend running on GitHub Pages.
-
-This browser-only demo uses `localStorage`. Records are **not shared between visitors or devices**, and deleting browser data removes any changes. **Do not enter actual students' personal information**, as this is a public demonstration without user authentication or a secure backend.
+- A horizontal university-style masthead replaces the former navy dashboard sidebar.
+- Deep pine-green cover area, archival paper motif, and Georgia serif headings.
+- A cream-coloured register with fine rules rather than rounded coloured cards.
+- Statistics presented in one continuous ledger strip.
+- A separate student enrolment desk with paper-form styling.
+- All existing application functionality remains in `app.js`.
 
 ## Features
 
-- Dashboard with total students, unique modules, lecturers, and flagged records.
-- Student register, search, filter by module, edit, delete and clear form.
-- Duplicate student-number validation and date validation.
-- CSV export and restoration of sample records.
-- Responsive layout for mobile and desktop.
-- Browser persistence using `localStorage`.
+- Register, edit and delete student records.
+- Search students and filter by module.
+- Student, module, lecturer and flagged-record totals.
+- CSV export, sample-data restoration and local browser storage.
+- Responsive layout for small screens.
 
-The column `button BOOLEAN` in the original SQL has no explained business meaning. It is presented here as a neutral **Record flag** (Yes/No), not as an inferred enrolment status.
+## Try it
 
-## Sample records
+Open `index.html` in a browser. The first visit includes five fictional example records taken from the original Java project's SQL sample data.
 
-The first visit starts with the five fictional/example records from the Java repository's SQL statement: S001–S005. Use **Restore sample data** to reset this browser's records.
+**Important:** This is a static HTML/CSS/JavaScript portfolio demo, not the Java/MySQL backend running in a browser. Each visitor's changes are saved only in their own browser. Do not enter real student data.
 
-## Run locally
+## Update an existing GitHub Pages website
 
-1. Extract this ZIP.
-2. Open `index.html` in Chrome or another modern browser. Alternatively open the folder in IntelliJ IDEA and use **Open in Browser**.
-3. Test adding, editing, deleting, searching and exporting.
+1. Unzip this folder.
+2. In your **Student-Management-Platform-Web** GitHub repository (or whichever repository hosts your student website), replace `index.html`, `style.css`, `app.js`, and `README.md` with these revised files.
+3. Keep the same repository name and existing Pages settings; there is no need to create another site.
+4. Once GitHub Pages updates, reload the website. If the previous style persists, use Ctrl+F5 to bypass the browser cache.
 
-No installation, npm, Java server, or MySQL database is needed for this browser demo.
-
-## Future full-stack upgrade
-
-For multi-user real records, use a backend with authentication, role-based access controls, validation, secure database access, audit logs and privacy protections. A Java Spring Boot API and a hosted database could be used, but those are *not* required for the current demonstration.
+Original Java project: https://github.com/Riska997/StudentManagementPlatform

@@ -1,6 +1,6 @@
 # Student Management Platform — Web Demo
 
-An interactive, responsive HTML/CSS/JavaScript adaptation of [Prisca Mulishi's Java Swing + MySQL Student Management Platform](https://github.com/Riska997/StudentManagementPlatform).
+An interactive, responsive HTML/CSS/JavaScript adaptation of [Java Swing + MySQL Student Management Platform](https://github.com/Riska997/StudentManagementPlatform).
 
 ## Important distinction
 
@@ -30,15 +30,6 @@ The first visit starts with the five fictional/example records from the Java rep
 3. Test adding, editing, deleting, searching and exporting.
 
 No installation, npm, Java server, or MySQL database is needed for this browser demo.
-
-## Publish free using GitHub Pages
-
-1. Create a **public** repository named `Student-Management-Platform-Web` (or choose another name).
-2. Upload `index.html`, `style.css`, and `app.js` into the **repository root**. This README is optional.
-3. Go to **Settings → Pages**.
-4. Set **Source: Deploy from a branch**, **Branch: main**, and **Folder: /(root)**; save.
-5. When published, it should have an address such as `https://riska997.github.io/Student-Management-Platform-Web/` (dependent on the exact repository name).
-6. Add that link to the corresponding project entry on your portfolio website.
 
 ## Future full-stack upgrade
 

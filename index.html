@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Management Platform: an interactive, browser-based portfolio demonstration by Prisca Mulishi." />
+  <meta name="theme-color" content="#111b38" />
+  <title>Student Management Platform | Prisca Mulishi</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#overview" aria-label="CampusDesk dashboard">
+        <span class="brand-mark" aria-hidden="true">▧</span>
+        <span><strong>CampusDesk</strong><small>STUDENT MANAGEMENT</small></span>
+      </a>
+      <div class="nav-block">
+        <p class="nav-heading">WORKSPACE</p>
+        <nav class="navigation">
+          <a class="nav-item active" href="#overview"><span aria-hidden="true">▦</span> Overview</a>
+          <a class="nav-item" href="#student-records"><span aria-hidden="true">▤</span> Student Records</a>
+          <a class="nav-item" href="#student-form"><span aria-hidden="true">＋</span> Register Student</a>
+        </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="sidebar-info"><span class="sidebar-info-title">Portfolio demo</span><p>Based on a Java Swing and MySQL student records project. All data here stays in this browser.</p></div>
+        <a class="source-link" href="https://github.com/Riska997/StudentManagementPlatform" target="_blank" rel="noopener noreferrer">View original Java source ↗</a>
+        <p class="copyright">© 2026 Prisca Mulishi</p>
+      </div>
+    </aside>
+
+    <main class="main-content" id="overview">
+      <header class="topbar">
+        <div class="breadcrumbs">Workspace <span>/</span> <strong>Overview</strong></div>
+        <div class="top-right"><span class="demo-pill"><span class="demo-dot"></span> Live browser demo</span><a href="https://riska997.github.io/" class="portfolio-link">Portfolio ↗</a></div>
+      </header>
+
+      <section class="welcome" aria-labelledby="page-title">
+        <div>
+          <p class="eyebrow">ACADEMIC RECORDS</p>
+          <h1 id="page-title">Student Management <span>Platform</span></h1>
+          <p class="subheading">Manage enrolment records, keep course information organised, and explore student data in one simple workspace.</p>
+        </div>
+        <a href="#student-form" class="button button-primary"><span aria-hidden="true">＋</span> Register student</a>
+      </section>
+
+      <section class="metrics" aria-label="Student record summary">
+        <article class="metric"><div class="metric-top"><span>Total students</span><span class="metric-icon purple" aria-hidden="true">♙</span></div><strong id="student-count">0</strong><small>Registered student records</small></article>
+        <article class="metric"><div class="metric-top"><span>Modules</span><span class="metric-icon blue" aria-hidden="true">▣</span></div><strong id="module-count">0</strong><small>Distinct enrolled modules</small></article>
+        <article class="metric"><div class="metric-top"><span>Lecturers</span><span class="metric-icon teal" aria-hidden="true">▥</span></div><strong id="lecturer-count">0</strong><small>Assigned teaching staff</small></article>
+        <article class="metric"><div class="metric-top"><span>Flagged records</span><span class="metric-icon amber" aria-hidden="true">⚑</span></div><strong id="flag-count">0</strong><small>Records with demo flag enabled</small></article>
+      </section>
+
+      <div class="workspace">
+        <section class="panel records-panel" id="student-records" aria-labelledby="records-title">
+          <div class="panel-inner">
+            <div class="section-title-row">
+              <div><p class="section-overline">STUDENT DIRECTORY</p><h2 id="records-title">Student records</h2><p class="section-description">View and manage enrolled students.</p></div>
+              <button type="button" class="button button-outline" id="export-button">↓ Export CSV</button>
+            </div>
+            <div class="tools-row">
+              <label class="search-wrap"><span class="visually-hidden">Search students</span><span aria-hidden="true">⌕</span><input type="search" id="search" placeholder="Search name, student number, module..." autocomplete="off" /></label>
+              <label class="filter-wrap"><span class="visually-hidden">Filter by module</span><select id="module-filter"><option value="all">All modules</option></select></label>
+            </div>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th scope="col">Student</th><th scope="col">Student no.</th><th scope="col">Enrolled module</th><th scope="col">Enrolment date</th><th scope="col">Lecturer</th><th scope="col">Flag</th><th scope="col">Actions</th></tr></thead>
+              <tbody id="student-table"></tbody>
+            </table>
+          </div>
+          <div class="empty-state" id="empty-state" hidden><span aria-hidden="true">▤</span><strong>No student records found</strong><p>Try a different search, change the module filter, or register a student.</p></div>
+          <div class="table-footer"><span id="table-summary">Showing 0 students</span><button type="button" id="reset-button" class="link-button">Restore sample data</button></div>
+        </section>
+
+        <div class="right-column">
+          <section class="panel form-panel" id="student-form" aria-labelledby="form-title">
+            <div class="panel-inner">
+              <p class="section-overline">STUDENT DETAILS</p>
+              <h2 id="form-title">Register a student</h2>
+              <p class="section-description" id="form-description">Fill in the details to create a new student record.</p>
+              <form id="record-form" novalidate>
+                <div class="field"><label for="student-number">Student number <span class="required">*</span></label><input id="student-number" type="text" autocomplete="off" maxlength="10" placeholder="e.g. S006" required /></div>
+                <div class="field"><label for="student-name">Full name <span class="required">*</span></label><input id="student-name" type="text" maxlength="100" autocomplete="off" placeholder="e.g. Jordan Smith" required /></div>
+                <div class="field"><label for="student-module">Enrolled module <span class="required">*</span></label><input id="student-module" type="text" list="module-suggestions" maxlength="100" placeholder="e.g. Software Engineering" required /><datalist id="module-suggestions"><option value="Software Engineering"></option><option value="Data Structures"></option><option value="Operating Systems"></option><option value="Database Systems"></option><option value="Network Security"></option><option value="Web Development"></option><option value="Computer Networks"></option></datalist></div>
+                <div class="field"><label for="student-date">Enrolment date <span class="required">*</span></label><input id="student-date" type="date" required /></div>
+                <div class="field"><label for="lecturer-name">Lecturer name <span class="required">*</span></label><input id="lecturer-name" type="text" maxlength="100" placeholder="e.g. Dr. Smith" required /></div>
+                <div class="field"><label for="record-flag">Record flag</label><select id="record-flag"><option value="false">No</option><option value="true">Yes</option></select><p class="field-hint">Neutral demonstration field corresponding to the original Java project's boolean column.</p></div>
+                <p id="form-error" class="form-error" role="alert" hidden></p>
+                <div class="form-buttons"><button type="submit" id="submit-button" class="button button-primary">＋ Register student</button><button type="button" id="clear-button" class="button button-outline">Clear</button></div>
+              </form>
+            </div>
+          </section>
+          <section class="panel overview-panel" aria-labelledby="modules-title"><div class="panel-inner"><p class="section-overline">ACADEMIC OVERVIEW</p><h2 id="modules-title">Top modules</h2><p class="section-description">Student counts by enrolled module.</p><div id="module-breakdown" class="module-breakdown"></div></div></section>
+        </div>
+      </div>
+      <footer class="footer"><span>Demo data only. No accounts or shared database.</span><span>Built as a browser adaptation of a <a href="https://github.com/Riska997/StudentManagementPlatform" target="_blank" rel="noopener noreferrer">Java Swing project</a>.</span></footer>
+    </main>
+  </div>
+  <div id="toast" role="status" class="toast" hidden></div>
+</body>
+</html>

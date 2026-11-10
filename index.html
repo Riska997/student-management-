@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#183e34">
+  <meta name="description" content="Campus Ledger: a student records management website, adapted from a Java project by Prisca Mulishi.">
+  <title>Campus Ledger | Student Management Platform</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <!-- The header intentionally feels like an academic office, not a software dashboard. -->
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="identity" href="#overview" aria-label="Campus Ledger homepage">
+        <span class="identity-seal" aria-hidden="true">CL</span>
+        <span class="identity-name"><strong>Campus Ledger</strong><small>STUDENT RECORDS · WEB DEMO</small></span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="#overview">Overview</a>
+        <a href="#student-records">Directory</a>
+        <a href="#student-form">Enrolment</a>
+      </nav>
+      <a class="portfolio-link" href="https://riska997.github.io/personal-portfolio-website/" target="_blank" rel="noopener noreferrer">Back to portfolio <span aria-hidden="true">↗</span></a>
+    </div>
+  </header>
+
+  <main id="overview" class="page">
+    <section class="opening" aria-labelledby="page-title">
+      <div class="opening-copy">
+        <p class="eyebrow on-dark"><span class="eyebrow-rule"></span> THE REGISTRAR'S DESK <span class="edition">/ DEMONSTRATION 01</span></p>
+        <h1 id="page-title">Every student<br>has a <em>story.</em></h1>
+        <p class="hero-description">An organised home for student records, modules and enrolment details. A simple, practical way to keep the essentials together.</p>
+        <a class="hero-action" href="#student-form">Register a student <span aria-hidden="true">↗</span></a>
+      </div>
+      <div class="opening-art" aria-hidden="true">
+        <div class="art-arc arc-one"></div><div class="art-arc arc-two"></div>
+        <div class="paper-card paper-back"></div>
+        <div class="paper-card paper-front">
+          <div class="paper-top"><span>ACADEMIC RECORD</span><span>№ 001</span></div>
+          <div class="paper-mark">C<span>•</span>L</div>
+          <div class="paper-lines"><i></i><i></i><i></i></div>
+          <div class="paper-bottom"><span>EST. FOR LEARNING</span><span>✳</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="snapshot" aria-label="Student records at a glance">
+      <div class="snapshot-label"><span class="small-caps">AT A GLANCE</span><span class="snapshot-caption">Your records,<br>in numbers.</span></div>
+      <div class="snapshot-metric"><strong id="student-count">0</strong><span>Registered students</span></div>
+      <div class="snapshot-metric"><strong id="module-count">0</strong><span>Modules offered</span></div>
+      <div class="snapshot-metric"><strong id="lecturer-count">0</strong><span>Lecturers listed</span></div>
+      <div class="snapshot-metric"><strong id="flag-count">0</strong><span>Flagged records</span></div>
+    </section>
+
+    <section id="student-records" class="directory section-block" aria-labelledby="records-title">
+      <div class="section-head">
+        <div><p class="section-index">01 / STUDENT DIRECTORY</p><h2 id="records-title">The student register<span class="period">.</span></h2><p class="section-lead">Browse and maintain student details in one place.</p></div>
+        <button type="button" id="export-button" class="button button-quiet"><span aria-hidden="true">↓</span> Export CSV</button>
+      </div>
+      <div class="register">
+        <div class="register-tools">
+          <label class="search-box"><span class="search-symbol" aria-hidden="true">⌕</span><span class="visually-hidden">Search students</span><input type="search" id="search" placeholder="Find a student, module or lecturer" autocomplete="off"></label>
+          <label class="filter-box"><span class="visually-hidden">Filter by module</span><select id="module-filter"><option value="all">All modules</option></select></label>
+        </div>
+        <div class="table-scroll">
+          <table>
+            <thead><tr><th scope="col">Student name</th><th scope="col">Number</th><th scope="col">Enrolled module</th><th scope="col">Date enrolled</th><th scope="col">Lecturer</th><th scope="col">Flag</th><th scope="col">Manage</th></tr></thead>
+            <tbody id="student-table"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="empty-state" hidden><strong>No matching records.</strong><p>Try another search or add a student below.</p></div>
+        <div class="register-footer"><span id="table-summary">Showing 0 students</span><button id="reset-button" type="button" class="text-button">↺ Restore the five sample records</button></div>
+      </div>
+    </section>
+
+    <section class="administration section-block" aria-label="Manage student records">
+      <div class="administration-aside">
+        <p class="section-index">02 / ENROLMENT DESK</p>
+        <h2>Make room for<br><em>what's next.</em></h2>
+        <p>Add a new student, or select <strong>Edit</strong> in the directory to update an existing record.</p>
+        <div class="side-note"><span class="side-note-icon" aria-hidden="true">✳</span><p><strong>About this demonstration</strong><br>Changes stay in your browser. This is not connected to a live school database, so please use fictional student information.</p></div>
+      </div>
+      <div class="enrolment-column">
+        <section class="form-sheet" id="student-form" aria-labelledby="form-title">
+          <div class="form-title-row"><div><span class="form-small-label">STUDENT RECORD / ENTRY FORM</span><h3 id="form-title">Register a student</h3><p id="form-description">Fill in the details to create a new student record.</p></div><span class="form-ornament" aria-hidden="true">✳</span></div>
+          <form id="record-form" novalidate>
+            <div class="fields-grid">
+              <div class="field"><label for="student-number">Student number <span class="required">*</span></label><input id="student-number" type="text" autocomplete="off" maxlength="10" placeholder="e.g. S006" required></div>
+              <div class="field"><label for="student-name">Full name <span class="required">*</span></label><input id="student-name" type="text" autocomplete="off" maxlength="100" placeholder="e.g. Jordan Smith" required></div>
+              <div class="field"><label for="student-module">Enrolled module <span class="required">*</span></label><input id="student-module" type="text" list="module-suggestions" maxlength="100" placeholder="e.g. Software Engineering" required>
+                <datalist id="module-suggestions"><option value="Software Engineering"></option><option value="Data Structures"></option><option value="Operating Systems"></option><option value="Database Systems"></option><option value="Network Security"></option><option value="Web Development"></option><option value="Computer Networks"></option></datalist>
+              </div>
+              <div class="field"><label for="student-date">Enrolment date <span class="required">*</span></label><input id="student-date" type="date" required></div>
+              <div class="field"><label for="lecturer-name">Lecturer name <span class="required">*</span></label><input id="lecturer-name" type="text" maxlength="100" placeholder="e.g. Dr. Smith" required></div>
+              <div class="field"><label for="record-flag">Record flag</label><select id="record-flag"><option value="false">No</option><option value="true">Yes</option></select></div>
+            </div>
+            <p class="form-footnote">The record flag corresponds to an existing boolean field in the original Java project.</p>
+            <p id="form-error" class="form-error" role="alert" hidden></p>
+            <div class="form-buttons"><button class="button button-primary" id="submit-button" type="submit">＋ Register student</button><button class="button button-secondary" id="clear-button" type="button">Clear form</button></div>
+          </form>
+        </section>
+        <section class="module-report" aria-labelledby="modules-title"><div class="report-heading"><p class="section-index">03 / COURSE SNAPSHOT</p><h3 id="modules-title">Modules on record</h3><p>Enrolment counts across your listed modules.</p></div><div id="module-breakdown" class="module-breakdown"></div></section>
+      </div>
+    </section>
+
+    <footer class="footer"><span>Campus Ledger <a href="https://riska997.github.io/personal-portfolio-website/"> Prisca Mulishi </a>, 2026.</span><a href="https://github.com/Riska997/StudentManagementPlatform" target="_blank" rel="noopener noreferrer">Original Java project ↗</a></footer>
+  </main>
+  <div id="toast" role="status" class="toast" hidden></div>
+</body>
+</html>
